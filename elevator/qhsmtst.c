@@ -128,6 +128,7 @@ QState QHsmTst_WAITING(QHsmTst *me) {
 		return Q_HANDLED();
 	}
 	case Q_EXIT_SIG: {
+
 		BSP_display("waiting-EXIT;");
 		return Q_HANDLED();
 	}
