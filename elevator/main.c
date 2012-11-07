@@ -79,18 +79,7 @@ int ordersExistInDir(int dir){
 /*..........................................................................*/
 int main(int argc, char *argv[]) {
 
-	int tempArray0 [50];
-	int tempArray1 [50];
-	int tempArray2 [50];
-	int tempArray3 [50];
-	int tempArray4 [50];
-	/*
-	waiting[0].currentlyWaiting = *tempArray0;
-	waiting[1].currentlyWaiting = tempArray1;
-	waiting[2] = tempArray2;
-	waiting[3] = tempArray3;
-	waiting[4] = tempArray4;
-*/
+
 
 	int j;
 	for (j = 0; j < 5 ; ++j){
@@ -157,7 +146,7 @@ int main(int argc, char *argv[]) {
         direct = NA;
         maxFloor = 4;
         printStatus();
-        for ( iterations = 0; iterations < 1000000; iterations ++){
+        for ( ; timePassed < 30000000; ){
         	timerCheckPoint = timePassed;
 
         	switch (direct){
