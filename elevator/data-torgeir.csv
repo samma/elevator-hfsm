@@ -1,0 +1,29 @@
+//Dataset Torgeir
+
+time between orders: 10
+getting stats; average time to wait in floor 0 is: 29.789753
+getting stats; average time to wait in floor 1 is: 17.588420
+getting stats; average time to wait in floor 2 is: 12.831041
+getting stats; average time to wait in floor 3 is: 17.070364
+getting stats; average time to wait in floor 4 is: 29.175710
+
+time between orders: 25
+getting stats; average time to wait in floor 0 is: 11.984991
+getting stats; average time to wait in floor 1 is: 8.869755
+getting stats; average time to wait in floor 2 is: 7.647144
+getting stats; average time to wait in floor 3 is: 8.826928
+getting stats; average time to wait in floor 4 is: 11.931235
+
+time between orders: 50
+getting stats; average time to wait in floor 0 is: 9.978448
+getting stats; average time to wait in floor 1 is: 6.973049
+getting stats; average time to wait in floor 2 is: 6.019169
+getting stats; average time to wait in floor 3 is: 6.965604
+getting stats; average time to wait in floor 4 is: 10.079472
+
+time between orders: 200
+getting stats; average time to wait in floor 0 is: 9.881149
+getting stats; average time to wait in floor 1 is: 6.951259
+getting stats; average time to wait in floor 2 is: 5.826653
+getting stats; average time to wait in floor 3 is: 7.191030
+getting stats; average time to wait in floor 4 is: 9.847079
