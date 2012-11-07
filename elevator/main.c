@@ -31,13 +31,9 @@
 #include <stdio.h>
 #include <assert.h>
 
-
-
-
 /* local objects -----------------------------------------------------------*/
 static FILE *l_outFile = (FILE *)0;
 static void dispatch(QSignal sig);
-
 
 extern int currentFloor ;
 extern enum direction direct;
@@ -47,45 +43,10 @@ extern int timePassed;
 
 
 
-int ordersExistInDir(int dir){
-  int i;
-  if (dir == UP){
-    for( i = currentFloor+1; i <= maxFloor; ++i){
-      if(elevOrders[i]){
-	return true;
-      }
-    }
-  }
-
-  else if (dir == DOWN){
-    for( i = currentFloor-1; i >= 0; --i){
-      if(elevOrders[i]){
-	return true;
-      }
-    }
-  }
-
-  else if (dir == NA){
-    for( i = 0; i <= maxFloor; ++i){
-      if(elevOrders[i]){
-	return true;
-      }
-    }
-  }
-  return false;
-}
-
-
 /*..........................................................................*/
 int main(int argc, char *argv[]) {
 
-
-
-	int j;
-	for (j = 0; j < 5 ; ++j){
-		elevOrders[j] = false;
-	}
-
+    int j;
     QHsmTst_ctor();                                  /* instantiate the HSM */
 
     if (argc > 1) {                                  /* file name provided? */
@@ -135,20 +96,17 @@ int main(int argc, char *argv[]) {
         		QP_getVersion());
 
         QHsm_init((QHsm *)&HSM_QHsmTst);    /* take the initial transitioin */
-
-
-
-
+	
         extern storeWait waiting [5];
-        int iterations;
-        int timerCheckPoint = 0;
 
+	//init
+	int iterations;
+        int timerCheckPoint = 0;
         direct = NA;
         maxFloor = 4;
-        printStatus();
-        for ( ; timePassed < 30000000; ){
+	for ( ; timePassed < 3000000; ){
         	timerCheckPoint = timePassed;
-
+		//Controller loop
         	switch (direct){
         	case UP: {
         		if (ordersExistInDir(UP)){
@@ -182,32 +140,16 @@ int main(int argc, char *argv[]) {
         		break;
         	}
         	}
-        	//printCurrWait(waiting);
-/*
-        	if (iterations == 1 ){
-        		//printf("time now: %d",timePassed);
 
-        		orderedToFloor(4,waiting);
-        	}
-
-        	if (iterations == 3 ){
-        		//printf("time now: %d",timePassed);
-        		orderedToFloor(0,waiting);
-        	}
-*/
+		//To make the time go if nothing has been done in the elevator
         	if (timerCheckPoint == timePassed){
         		tick5();
         	}
-        	//printStatus(waiting);
+        	
+		//printStatus(waiting);
         	//printf("iteration no: %d",iterations);
-
-			assert(currentFloor <= 4 && currentFloor >= 0);
-
-
-
-
+		assert(currentFloor <= maxFloor && currentFloor >= 0);
         }
-
         printStatistics(waiting);
         fclose(l_outFile);
     }
@@ -250,4 +192,32 @@ void printStatus(void){
 	printf("\n");
 
 
+}
+
+int ordersExistInDir(int dir){
+  int i;
+  if (dir == UP){
+    for( i = currentFloor+1; i <= maxFloor; ++i){
+      if(elevOrders[i]){
+	return true;
+      }
+    }
+  }
+
+  else if (dir == DOWN){
+    for( i = currentFloor-1; i >= 0; --i){
+      if(elevOrders[i]){
+	return true;
+      }
+    }
+  }
+
+  else if (dir == NA){
+    for( i = 0; i <= maxFloor; ++i){
+      if(elevOrders[i]){
+	return true;
+      }
+    }
+  }
+  return false;
 }
